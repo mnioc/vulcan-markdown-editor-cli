@@ -1,0 +1,94 @@
+.root,
+body {
+    overflow: hidden;
+}
+
+.md-editor-fullscreen,
+.md-editor {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    .editor-header {
+        position: relative;
+        border: 1px solid #e4e4e4;
+        height: 40px;
+        width: 100%;
+        line-height: 40px;
+        .cum-i-icon {
+            color: #666;
+            font-size: 20px;
+            display: inline-block;
+            transition: all 0.5s;
+            font-family: 'FontAwesome';
+            font: normal normal normal 20px/1 FontAwesome;
+            padding: 4px;
+            margin-top: 5px;
+        }
+        .cum-icon {
+            color: #666;
+            font-size: 20px;
+            transition: all 0.5s;
+            padding: 4px;
+            margin-top: 5px;
+        }
+        .ant-icon:hover,
+        .cum-i-icon:hover,
+        .cum-icon:hover {
+            color: #23af60;
+            background-color: #ddd;
+            border-radius: 4px;
+        }
+    }
+
+    .editor-content {
+        border: 1px solid #e4e4e4;
+        border-top: none;
+        position: relative;
+        overflow: hidden;
+        height: calc(100% - 40px);
+        display: flex;
+        width: 100%;
+
+        .editor-editable {
+            position: relative;
+            height: 100%;
+            overflow: auto;
+
+            .react-codemirror2 {
+                position: relative;
+                height: 100% !important;
+            }
+
+            .CodeMirror,
+            .CodeMirror-wrap {
+                position: relative;
+                height: 100% !important;
+            }
+        }
+
+        .md-content {
+            border: 1px solid #e4e4e4;
+            border-top: none;
+            position: relative;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .md-editor-preview-theme-channing-cyan {
+            @import '../assets/MdTheme/channing-cyan.less';
+        }
+    }
+}
+
+.md-editor-fullscreen {
+    position: fixed;
+    height: 100vh;
+    background-color: #fff;
+    width: 100%;
+    margin: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
