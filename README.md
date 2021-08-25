@@ -25,6 +25,8 @@ npm i --save vulcan-markdown-editor-cli/lib
 
 ### 2. demo
 
+[在线demo](https://juqipeng.github.io/vulcan-markdown-editor-cli/docs/index.html)
+
 ```javascript
 import React from 'react';
 import MDEditor from 'vulcan-markdown-editor-cli/lib';
