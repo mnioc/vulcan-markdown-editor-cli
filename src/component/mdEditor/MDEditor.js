@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import MdHeader from './MdHeader';
-import ReactMarkdown from 'react-markdown';
-import gfm from 'remark-gfm';
-import { codeHig, SyntaxHighlighter } from './CodeHig';
+import MDPriview from '../mdPriview/index';
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/lib/codemirror.js';
 import 'codemirror/lib/codemirror.css';
-import '../assets/EditorTheme/mdn-like.css';
-import '../assets/EditorTheme/ambiance.css';
+import '../../assets/EditorTheme/mdn-like.css';
+import '../../assets/EditorTheme/ambiance.css';
 import './index.less';
 
 let scrolling = 0;
@@ -198,24 +196,6 @@ function MdEditor(props) {
         }
     };
 
-    const components = {
-        code({ node, inline, className, children, ...props }) {
-            const match = /language-(\w+)/.exec(className || '');
-            return !inline && match ? (
-                <SyntaxHighlighter
-                    style={codeHig[theme.codeHig]}
-                    language={match[1]}
-                    PreTag="div"
-                    showLineNumbers
-                    children={String(children).replace(/\n$/, '')}
-                    {...props}
-                />
-            ) : (
-                <code className={className} {...props} />
-            );
-        }
-    };
-
     const srollLock = () => {
         if (scrollTimer) clearTimeout(scrollTimer);
         scrollTimer = setTimeout(() => {
@@ -338,7 +318,20 @@ function MdEditor(props) {
                             }}
                         />
                     </div>
-                    <div
+                    <MDPriview
+                        onScroll={e => {
+                            handleScroll(e);
+                        }}
+                        contentTheme={theme.contentTheme}
+                        style={{
+                            width: EDIT_MODE[editMode].right_width,
+                            display: EDIT_MODE[editMode].right_width === 0 ? 'none' : 'block'
+                        }}
+                        codeHigTheme={theme.codeHig}
+                        value={value}
+                    />
+
+                    {/* <div
                         id="md-content"
                         onScroll={e => {
                             handleScroll(e);
@@ -352,7 +345,7 @@ function MdEditor(props) {
                         <ReactMarkdown components={components} remarkPlugins={[gfm]} allowDangerousHtml>
                             {value}
                         </ReactMarkdown>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

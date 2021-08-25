@@ -1,3 +1,4 @@
-import MDEditor from './component/MDEditor';
+import MDEditor from './component/mdEditor/MDEditor';
+import MDPriview from './component/mdPriview';
 
-export default MDEditor;
+export { MDEditor, MDPriview };
