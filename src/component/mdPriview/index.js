@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import gfm from 'remark-gfm';
 import { codeHig, SyntaxHighlighter } from './CodeHig';
+import remarkGfm from 'remark-gfm';
 import './index.less';
 
 export default props => {
@@ -20,7 +20,9 @@ export default props => {
                     {...props}
                 />
             ) : (
-                <code className={className} {...props} />
+                <code className={className} {...props}>
+                    {children}
+                </code>
             );
         }
     };
@@ -33,7 +35,7 @@ export default props => {
             style={style}
             {...otherProps}
         >
-            <ReactMarkdown components={components} remarkPlugins={[gfm]} allowDangerousHtml>
+            <ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
                 {value}
             </ReactMarkdown>
         </div>
