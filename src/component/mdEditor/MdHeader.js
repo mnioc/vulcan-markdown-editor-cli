@@ -54,7 +54,6 @@ export default props => {
             <Menu.Item key="prism">prism</Menu.Item>
             <Menu.Item key="synthwave84">synthwave84</Menu.Item>
             <Menu.Item key="tomorrow">tomorrow</Menu.Item>
-            <Menu.Item key="xonokai">xonokai</Menu.Item>
         </Menu>
     );
 
@@ -109,11 +108,10 @@ export default props => {
                 setThemeConf({ contentTheme: e.key });
             }}
         >
-            <Menu.Item key="none">默认</Menu.Item>
-            <Menu.Item key="md-editor-preview-theme-channing-cyan">channing-cyan</Menu.Item>
-            <Menu.Item key="md-editor-preview-theme-juejin">juejin</Menu.Item>
-            <Menu.Item key="md-editor-preview-theme-smartblue">smartblue</Menu.Item>
-            <Menu.Item key="md-editor-preview-theme-awesome-green">awesome-green</Menu.Item>
+            <Menu.Item key="channing-cyan">channing-cyan</Menu.Item>
+            <Menu.Item key="juejin">juejin</Menu.Item>
+            <Menu.Item key="smartblue">smartblue</Menu.Item>
+            <Menu.Item key="awesome-green">awesome-green</Menu.Item>
         </Menu>
     );
 

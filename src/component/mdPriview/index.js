@@ -29,8 +29,9 @@ export default props => {
         <div
             id="md-content"
             onScroll={onScroll}
-            className={`md-content md-editor-preview ${contentTheme}`}
+            className={`md-content md-editor-preview-theme-${contentTheme}`}
             style={style}
+            {...props}
         >
             <ReactMarkdown components={components} remarkPlugins={[gfm]} allowDangerousHtml>
                 {value}

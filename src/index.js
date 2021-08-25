@@ -1,5 +1,9 @@
-import __MDEditor from './component/mdEditor/MDEditor';
-import __MDPriview from './component/mdPriview/index';
+import MDEditor from './component/mdEditor/MDEditor';
+import MDPriview from './component/mdPriview/index';
 
-export const MDEditor = __MDEditor;
-export const MDPriview = __MDPriview;
+const _ = {
+    MDEditor: MDEditor,
+    MDPriview: MDPriview
+};
+
+export default _;

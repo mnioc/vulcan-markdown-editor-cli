@@ -34,7 +34,7 @@ function MdEditor(props) {
     const [editor, setEditor] = useState();
     const [editMode, setEditMode] = useState(2);
     const [theme, setTheme] = useState({
-        contentTheme: 'md-editor-preview-theme-awesome-green',
+        contentTheme: 'awesome-green',
         editTheme: 'mdn-like',
         fontSize: 16,
         codeHig: 'a11yDark'
