@@ -5,7 +5,7 @@ import { codeHig, SyntaxHighlighter } from './CodeHig';
 import './index.less';
 
 export default props => {
-    const { style, contentTheme, onScroll, value, codeHigTheme } = props;
+    const { style, contentTheme, onScroll, value, codeHigTheme, ...otherProps } = props;
 
     const components = {
         code({ node, inline, className, children, ...props }) {
@@ -31,7 +31,7 @@ export default props => {
             onScroll={onScroll}
             className={`md-content md-editor-preview-theme-${contentTheme}`}
             style={style}
-            {...props}
+            {...otherProps}
         >
             <ReactMarkdown components={components} remarkPlugins={[gfm]} allowDangerousHtml>
                 {value}

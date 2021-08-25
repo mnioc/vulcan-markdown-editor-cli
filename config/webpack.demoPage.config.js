@@ -6,10 +6,9 @@ module.exports = {
     mode: 'production',
     entry: path.join(__dirname, '../demo/src/index.js'),
     output: {
-        path: path.join(__dirname, '../docs/'),
-        filename: 'index.js',
-        libraryTarget: 'umd',
-        libraryExport: 'default'
+        path: path.join(__dirname, '../dist/'),
+        publicPath: '/vulcan-markdown-editor-cli/',
+        filename: 'index.js'
     },
     module: {
         rules: [

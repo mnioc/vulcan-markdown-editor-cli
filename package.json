@@ -24,7 +24,7 @@
     "build": "webpack --config config/webpack.prod.config.js",
     "pub": "npm run build && npm publish",
     "buildDemo": "webpack --config config/webpack.demoPage.config.js",
-    "deploy": "gh-pages -d docs/"
+    "deploy": "npm run buildDemo && gh-pages -d dist/"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
