@@ -7,7 +7,7 @@ module.exports = {
     entry: path.join(__dirname, '../demo/src/index.js'),
     output: {
         path: path.join(__dirname, '../docs/'),
-        filename: 'index.js',
+        filename: 'bundle.js',
         libraryTarget: 'umd',
         libraryExport: 'default'
     },
