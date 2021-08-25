@@ -1,11 +1,12 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 用于将组件的css打包成单独的文件输出到`lib`目录中
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: 'production',
     entry: path.join(__dirname, '../src/index.js'),
     output: {
-        path: path.join(__dirname, '../docs/'),
+        path: path.join(__dirname, '../lib/'),
         filename: 'index.js',
         libraryTarget: 'umd',
         libraryExport: 'default'
@@ -59,7 +60,9 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'main.min.css'
         })
+        // new BundleAnalyzerPlugin()
     ],
+
     externals: {
         react: {
             root: 'React',

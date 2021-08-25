@@ -1,3 +1,9 @@
-import MDEditor from './component/MDEditor';
+import MDEditor from './component/mdEditor/MDEditor';
+import MDPriview from './component/mdPriview/index';
 
-export default MDEditor;
+const _ = {
+    MDEditor: MDEditor,
+    MDPriview: MDPriview
+};
+
+export default _;

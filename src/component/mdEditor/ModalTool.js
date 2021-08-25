@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, Modal, Form, Input, Radio, Button, Upload, InputNumber, Select } from 'antd';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import React from 'react';
+import { Modal, Form, Input, Radio, Button, InputNumber } from 'antd';
 
 export const TableModal = props => {
     const onFinish = values => {
@@ -92,43 +91,6 @@ export const LinkModal = props => {
                     </Button>
                 </Form.Item>
             </Form>
-        </Modal>
-    );
-};
-
-export const MdUploadModal = props => {
-    const beforeUpload = (file, fileList) => {
-        var reader = new FileReader();
-        reader.readAsText(file, 'utf-8');
-        reader.onload = function (e) {
-            props.insertText(e.target.result);
-            props.setShowMdUploadModal(false);
-            return false;
-        };
-    };
-    return (
-        <Modal
-            title="导入markdown文档"
-            bodyStyle={{ height: '160px', overflowY: 'auto' }}
-            destroyOnClose={true}
-            footer={null}
-            onCancel={() => {
-                props.setShowMdUploadModal(false);
-            }}
-            visible={props.showMdUploadModal}
-        >
-            <Upload
-                name="file_path"
-                listType="picture-card"
-                className="avatar-uploader"
-                showUploadList={false}
-                beforeUpload={beforeUpload}
-            >
-                <div>
-                    <PlusOutlined />
-                    <div style={{ marginTop: 8 }}>Upload</div>
-                </div>
-            </Upload>
         </Modal>
     );
 };

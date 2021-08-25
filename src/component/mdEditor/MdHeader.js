@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import { Space, Divider, Tooltip, Dropdown, Menu, Upload, message } from 'antd';
 import {
-    RedoOutlined,
-    UndoOutlined,
-    EditOutlined,
-    MinusOutlined,
-    FullscreenOutlined,
-    FullscreenExitOutlined
-} from '@ant-design/icons';
-import {
     QuoteIcon,
     ItalicIcon,
     UnOrderedListIcon,
@@ -26,8 +18,14 @@ import {
     CodeBlockIcon,
     EditPreviewIcon,
     PreviewIcon,
-    UploadIcon
-} from '../assets/Icon';
+    UploadIcon,
+    RedoOutlined,
+    UndoOutlined,
+    EditOutlined,
+    MinusOutlined,
+    FullscreenOutlined,
+    FullscreenExitOutlined
+} from '../../assets/Icon';
 import { TableModal, LinkModal } from './ModalTool';
 
 export default props => {
@@ -56,7 +54,6 @@ export default props => {
             <Menu.Item key="prism">prism</Menu.Item>
             <Menu.Item key="synthwave84">synthwave84</Menu.Item>
             <Menu.Item key="tomorrow">tomorrow</Menu.Item>
-            <Menu.Item key="xonokai">xonokai</Menu.Item>
         </Menu>
     );
 
@@ -97,7 +94,6 @@ export default props => {
             <Menu.Item key="css">c++</Menu.Item>
             <Menu.Item key="less">golang</Menu.Item>
             <Menu.Item key="scss">bash</Menu.Item>
-            <Menu.Item key="sass">shell</Menu.Item>
             <Menu.Item key="sql">sql</Menu.Item>
             <Menu.Item key="scala">scala</Menu.Item>
             <Menu.Item key="ruby">ruby</Menu.Item>
@@ -112,10 +108,10 @@ export default props => {
                 setThemeConf({ contentTheme: e.key });
             }}
         >
-            <Menu.Item key="none">默认</Menu.Item>
-            <Menu.Item key="md-editor-preview-theme-channing-cyan">channing-cyan</Menu.Item>
-            <Menu.Item key="md-editor-preview-theme-red">red</Menu.Item>
-            <Menu.Item key="md-editor-preview-theme-green">green</Menu.Item>
+            <Menu.Item key="channing-cyan">channing-cyan</Menu.Item>
+            <Menu.Item key="juejin">juejin</Menu.Item>
+            <Menu.Item key="smartblue">smartblue</Menu.Item>
+            <Menu.Item key="awesome-green">awesome-green</Menu.Item>
         </Menu>
     );
 
@@ -191,74 +187,75 @@ export default props => {
     };
 
     return (
-        <Space split={<Divider type="vertical" dashed={true} />}>
+        <>
             <TableModal insertText={insertText} showTableModal={showTableModal} setShowTableModal={setShowTableModal} />
             <LinkModal insertText={insertText} showLinkModal={showLinkModal} setShowLinkModal={setShowLinkModal} />
-            {clickMenuList.map((item, __idx) => (
-                <Space key={__idx + 100}>
-                    {item.map((_, index) => (
-                        <a key={index} onClick={_.clickEvent}>
+            <Space split={<Divider type="vertical" dashed={true} />}>
+                {clickMenuList.map((item, __idx) => (
+                    <Space key={__idx + 100}>
+                        {item.map((_, index) => (
+                            <a key={index} onClick={_.clickEvent}>
+                                <Tooltip placement="bottomLeft" title={_.tipTitle}>
+                                    <i className="cum-i-icon">{_.icon}</i>
+                                </Tooltip>
+                            </a>
+                        ))}
+                        {__idx === 3 && (
+                            <>
+                                <Tooltip placement="bottomLeft" title="代码块">
+                                    <Dropdown overlay={codeTypeMenu} trigger={['click']}>
+                                        <a onClick={e => e.preventDefault()}>
+                                            <i className="cum-i-icon">{<CodeBlockIcon />}</i>
+                                        </a>
+                                    </Dropdown>
+                                </Tooltip>
+                                <Tooltip title="上传图片">
+                                    <Upload
+                                        name="file_path"
+                                        showUploadList={false}
+                                        headers={props.imageUploadConf?.headers}
+                                        action={props.imageUploadConf?.url}
+                                        onChange={handleChange}
+                                    >
+                                        <a onClick={e => e.preventDefault()}>
+                                            <i className="cum-i-icon">{<ImgUploadIcon />}</i>
+                                        </a>
+                                    </Upload>
+                                </Tooltip>
+                            </>
+                        )}
+                    </Space>
+                ))}
+                <Space>
+                    {dropdownMenuList.map((item, index) => (
+                        <Tooltip key={index + 200} placement="bottomLeft" title={item.tipTitle}>
+                            <Dropdown overlay={item.overlay} trigger={['click']}>
+                                <a onClick={e => e.preventDefault()}>
+                                    <i className="cum-i-icon">{item.icon}</i>
+                                </a>
+                            </Dropdown>
+                        </Tooltip>
+                    ))}
+                </Space>
+                <Space>
+                    {otherToolList.map((_, index) => (
+                        <a key={index + 400} onClick={_.clickEvent}>
                             <Tooltip placement="bottomLeft" title={_.tipTitle}>
                                 <i className="cum-i-icon">{_.icon}</i>
                             </Tooltip>
                         </a>
                     ))}
-
-                    {__idx === 3 && (
-                        <>
-                            <Tooltip placement="bottomLeft" title="代码块">
-                                <Dropdown overlay={codeTypeMenu} trigger={['click']}>
-                                    <a onClick={e => e.preventDefault()}>
-                                        <i className="cum-i-icon">{<CodeBlockIcon />}</i>
-                                    </a>
-                                </Dropdown>
-                            </Tooltip>
-                            <Tooltip title="上传图片">
-                                <Upload
-                                    name="file_path"
-                                    showUploadList={false}
-                                    headers={props.imageUploadConf?.headers}
-                                    action={props.imageUploadConf?.url}
-                                    onChange={handleChange}
-                                >
-                                    <a onClick={e => e.preventDefault()}>
-                                        <i className="cum-i-icon">{<ImgUploadIcon />}</i>
-                                    </a>
-                                </Upload>
-                            </Tooltip>
-                        </>
-                    )}
                 </Space>
-            ))}
-            <Space>
-                {dropdownMenuList.map((item, index) => (
-                    <Tooltip key={index + 200} placement="bottomLeft" title={item.tipTitle}>
-                        <Dropdown overlay={item.overlay} trigger={['click']}>
+                <Space>
+                    <Tooltip title="导入markdown">
+                        <Upload name="file_path" showUploadList={false} beforeUpload={beforeUpload}>
                             <a onClick={e => e.preventDefault()}>
-                                <i className="cum-i-icon">{item.icon}</i>
+                                <i className="cum-i-icon">{<UploadIcon />}</i>
                             </a>
-                        </Dropdown>
+                        </Upload>
                     </Tooltip>
-                ))}
+                </Space>
             </Space>
-            <Space>
-                {otherToolList.map((_, index) => (
-                    <a key={index + 400} onClick={_.clickEvent}>
-                        <Tooltip placement="bottomLeft" title={_.tipTitle}>
-                            <i className="cum-i-icon">{_.icon}</i>
-                        </Tooltip>
-                    </a>
-                ))}
-            </Space>
-            <Space>
-                <Tooltip title="导入markdown">
-                    <Upload name="file_path" showUploadList={false} beforeUpload={beforeUpload}>
-                        <a onClick={e => e.preventDefault()}>
-                            <i className="cum-i-icon">{<UploadIcon />}</i>
-                        </a>
-                    </Upload>
-                </Tooltip>
-            </Space>
-        </Space>
+        </>
     );
 };

@@ -23,11 +23,13 @@
 npm i --save vulcan-markdown-editor-cli/lib
 ```
 
-### 2. demo
+### 2. 编辑器 demo
+
+[在线 demo](https://juqipeng.github.io/vulcan-markdown-editor-cli/docs/index.html)
 
 ```javascript
 import React from 'react';
-import MDEditor from 'vulcan-markdown-editor-cli/lib';
+import { MDEditor } from 'vulcan-markdown-editor-cli/lib';
 import 'vulcan-markdown-editor-cli/lib/main.min.css';
 
 export default () => {
@@ -51,3 +53,34 @@ export default () => {
     );
 };
 ```
+
+### 3. markdown 转 html 组件 demo
+
+```javascript
+import React from 'react';
+import { MDPriview } from 'vulcan-markdown-editor-cli/lib';
+import 'vulcan-markdown-editor-cli/lib/main.min.css';
+
+export default () => {
+    // markdown内容
+    const value = '# 这是一个基于react-codemirror2打造的markdown在线编辑器';
+
+    // 文章内容主题
+    const contentTheme = 'awesome-green';
+
+    // 代码高亮风格
+    // 目前内置（a11yDark、prism、synthwave84、tomorrow）
+    const codeHigTheme = 'a11yDark';
+
+    return <MDPriview value={value} contentTheme="awesome-green" codeHigTheme={codeHigTheme} />;
+};
+```
+
+> 目前该组件内置四种主题：
+
+-   awesome-green
+-   juejin
+-   smartblue
+-   channing-cyan
+
+上述主题均来自社区优秀的主题[地址](https://github.com/xitu/juejin-markdown-themes)，再次特别鸣谢这些主题的作者，若有侵权，请联系作者删除！
