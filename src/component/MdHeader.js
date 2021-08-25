@@ -114,8 +114,9 @@ export default props => {
         >
             <Menu.Item key="none">默认</Menu.Item>
             <Menu.Item key="md-editor-preview-theme-channing-cyan">channing-cyan</Menu.Item>
-            <Menu.Item key="md-editor-preview-theme-red">red</Menu.Item>
-            <Menu.Item key="md-editor-preview-theme-green">green</Menu.Item>
+            <Menu.Item key="md-editor-preview-theme-juejin">juejin</Menu.Item>
+            <Menu.Item key="md-editor-preview-theme-smartblue">smartblue</Menu.Item>
+            <Menu.Item key="md-editor-preview-theme-awesome-green">awesome-green</Menu.Item>
         </Menu>
     );
 

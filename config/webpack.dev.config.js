@@ -64,7 +64,7 @@ module.exports = {
         contentBase: path.join(__dirname, '../demo/src/'),
         compress: true,
         host: '127.0.0.1',
-        port: 8080,
+        port: 8088,
         open: true
     },
     plugins: [
