@@ -13,7 +13,7 @@ module.exports = function (api) {
     const plugins = [
         '@babel/plugin-transform-runtime',
         '@babel/plugin-proposal-optional-chaining',
-        ['import', { libraryName: 'antd', style: true }]
+        ['import', { libraryName: 'antd', style: 'css' }]
     ];
 
     return {

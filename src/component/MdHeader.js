@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import { Space, Divider, Tooltip, Dropdown, Menu, Upload, message } from 'antd';
 import {
-    RedoOutlined,
-    UndoOutlined,
-    EditOutlined,
-    MinusOutlined,
-    FullscreenOutlined,
-    FullscreenExitOutlined
-} from '@ant-design/icons';
-import {
     QuoteIcon,
     ItalicIcon,
     UnOrderedListIcon,
@@ -26,7 +18,13 @@ import {
     CodeBlockIcon,
     EditPreviewIcon,
     PreviewIcon,
-    UploadIcon
+    UploadIcon,
+    RedoOutlined,
+    UndoOutlined,
+    EditOutlined,
+    MinusOutlined,
+    FullscreenOutlined,
+    FullscreenExitOutlined
 } from '../assets/Icon';
 import { TableModal, LinkModal } from './ModalTool';
 
@@ -97,7 +95,6 @@ export default props => {
             <Menu.Item key="css">c++</Menu.Item>
             <Menu.Item key="less">golang</Menu.Item>
             <Menu.Item key="scss">bash</Menu.Item>
-            <Menu.Item key="sass">shell</Menu.Item>
             <Menu.Item key="sql">sql</Menu.Item>
             <Menu.Item key="scala">scala</Menu.Item>
             <Menu.Item key="ruby">ruby</Menu.Item>

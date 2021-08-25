@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { UnControlled as CodeMirror } from 'react-codemirror2';
 import MdHeader from './MdHeader';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import gfm from 'remark-gfm';
-import CodeHig from './CodeHig';
+import { codeHig, SyntaxHighlighter } from './CodeHig';
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/lib/codemirror.js';
 import 'codemirror/lib/codemirror.css';
@@ -204,7 +203,7 @@ function MdEditor(props) {
             const match = /language-(\w+)/.exec(className || '');
             return !inline && match ? (
                 <SyntaxHighlighter
-                    style={CodeHig[theme.codeHig]}
+                    style={codeHig[theme.codeHig]}
                     language={match[1]}
                     PreTag="div"
                     showLineNumbers
