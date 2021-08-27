@@ -1,6 +1,6 @@
 {
   "name": "vulcan-markdown-editor-cli",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "基于react-codemirror2打造的markdown在线编辑器",
   "main": "index.js",
   "keywords": [
