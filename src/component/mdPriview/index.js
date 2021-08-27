@@ -15,6 +15,7 @@ export default props => {
                     style={codeHig[codeHigTheme]}
                     language={match[1]}
                     PreTag="div"
+                    CodeTag="div"
                     showLineNumbers
                     children={String(children).replace(/\n$/, '')}
                     {...props}
