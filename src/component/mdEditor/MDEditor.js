@@ -252,7 +252,6 @@ function MdEditor(props) {
     const pasteImg = function (event) {
         var items = event.clipboardData && event.clipboardData.items;
         var file = null;
-        console.log('ininini');
         if (items && items.length) {
             // 检索剪切板items
             for (var i = 0; i < items.length; i++) {

@@ -33,6 +33,33 @@ export default props => {
     const [showTableModal, setShowTableModal] = useState(false);
     const [showLinkModal, setShowLinkModal] = useState(false);
 
+    const insertTable = () => {
+        if (editor.somethingSelected()) {
+            const selectContent = editor.getSelection();
+            const textList = selectContent.split('\n');
+            if (textList?.length < 1) {
+                setShowTableModal(true);
+                return;
+            }
+            let tempText = '';
+            textList.forEach((item, idx) => {
+                const rowList = item.split('\t');
+                let rowText = '|';
+                rowList.forEach(_ => {
+                    rowText += _ + '|';
+                });
+                if (idx === 0) {
+                    rowText = rowText + '\n' + '|  :----: |  :----: |  :----: |';
+                }
+                tempText = tempText + rowText + '\n';
+            });
+            editor.replaceSelection(tempText);
+            editor.focus();
+            return;
+        }
+        setShowTableModal(true);
+    };
+
     const editThemeMenu = (
         <Menu
             onClick={e => {
@@ -139,7 +166,7 @@ export default props => {
             { clickEvent: () => insertText('orderList', '1. '), tipTitle: '有序列表', icon: <OrderedListIcon /> },
             { clickEvent: () => insertText('list', '- '), tipTitle: '无序列表', icon: <UnOrderedListIcon /> },
             { clickEvent: () => insertText('list', '- [x] '), tipTitle: '任务列表', icon: <TaskListIcon /> },
-            { clickEvent: () => setShowTableModal(true), tipTitle: '插入表格', icon: <TableIcon /> },
+            { clickEvent: () => insertTable(), tipTitle: '插入表格', icon: <TableIcon /> },
             { clickEvent: () => setShowLinkModal(true), tipTitle: '插入链接', icon: <LinkIcon /> },
             { clickEvent: () => insertText('middle', '`{$}`'), tipTitle: '行内代码', icon: <CodeInlineIcon /> }
         ]
